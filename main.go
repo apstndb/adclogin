@@ -1,4 +1,4 @@
-// adc-login: Standalone replacement for "gcloud auth application-default login".
+// adclogin: Standalone replacement for "gcloud auth application-default login".
 //
 // This is a Proof of Concept (PoC). Use at your own risk.
 // See README.md for important disclaimers about account safety.

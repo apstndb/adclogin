@@ -1,4 +1,4 @@
-# adc-login
+# adclogin
 
 A standalone, single-binary tool that replicates the core functionality of
 `gcloud auth application-default login` without requiring the Google Cloud SDK.
@@ -17,7 +17,7 @@ difficult or impossible:
 - Embedded / IoT development environments
 
 In these situations, obtaining Application Default Credentials (ADC) for
-local development becomes a challenge. `adc-login` solves this by providing
+local development becomes a challenge. `adclogin` solves this by providing
 the same OAuth2 flow in a single Go binary with zero runtime dependencies.
 
 ## Disclaimer
@@ -56,7 +56,7 @@ Or download a pre-built binary from the [Releases](https://github.com/apstndb/ad
 Cross-compile for Termux (aarch64 Android):
 
 ```bash
-GOOS=android GOARCH=arm64 go build -o adc-login .
+GOOS=android GOARCH=arm64 go build -o adclogin .
 ```
 
 ## Usage
@@ -64,19 +64,19 @@ GOOS=android GOARCH=arm64 go build -o adc-login .
 ### Basic (browser flow)
 
 ```bash
-adc-login
+adclogin
 ```
 
 ### No-browser flow (for headless / Termux environments)
 
 ```bash
-adc-login --no-browser
+adclogin --no-browser
 ```
 
 ### Custom scopes
 
 ```bash
-adc-login \
+adclogin \
   --client-id-file=my-client.json \
   --scopes="openid,https://www.googleapis.com/auth/userinfo.email,https://www.googleapis.com/auth/cloud-platform,https://www.googleapis.com/auth/drive"
 ```
@@ -84,29 +84,29 @@ adc-login \
 ### With quota project
 
 ```bash
-adc-login --quota-project=my-billing-project
+adclogin --quota-project=my-billing-project
 ```
 
 ### Without quota project
 
 ```bash
-adc-login --disable-quota-project
+adclogin --disable-quota-project
 ```
 
 ### Service account impersonation
 
 ```bash
 # Direct impersonation
-adc-login --impersonate-service-account=sa@my-project.iam.gserviceaccount.com
+adclogin --impersonate-service-account=sa@my-project.iam.gserviceaccount.com
 
 # Delegation chain: SA1 -> SA2 (SA2 is the final target)
-adc-login --impersonate-service-account=sa1@proj.iam.gserviceaccount.com,sa2@proj.iam.gserviceaccount.com
+adclogin --impersonate-service-account=sa1@proj.iam.gserviceaccount.com,sa2@proj.iam.gserviceaccount.com
 ```
 
 ### Combined flags
 
 ```bash
-adc-login \
+adclogin \
   --impersonate-service-account=sa@my-project.iam.gserviceaccount.com \
   --quota-project=my-billing-project \
   --no-browser
